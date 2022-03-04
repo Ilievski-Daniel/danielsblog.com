@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\PostCategories;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -21,6 +22,11 @@ class PostController extends Controller
         $post->shortDesc = $request->shortDesc;
         $post->content = $request->content;
         $post->save();
+        
+        $postcategories = new PostCategories;
+        $postcategories->post_id = $post->id;
+        $postcategories->category_id = $request->category;
+        $postcategories->save();
         return redirect('/');
     }
 
