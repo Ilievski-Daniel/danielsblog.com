@@ -119,7 +119,12 @@
                 @foreach ($comm as $com)
                     @if ($comment->comment_id == $com->id)
                         <h6 class="col-6" style="display: inline"> {{$com->content}}</h6>
-                        <p> Comment by: {{$com->author}} | {{$com->created_at}} </p>   
+                        <p> Comment by: {{$com->author}} | {{$com->created_at}} </p> 
+                        <form action="/delete-comment/{{$com->id}}/{{$post->id}}" method="POST">
+                            @csrf
+                            {{method_field('DELETE');}}
+                            <input style="border:0;" type="submit" name="submit" value="🗑️">
+                        </form>  
                     @endif  
                 @endforeach
                 @endforeach

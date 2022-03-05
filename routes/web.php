@@ -52,3 +52,4 @@ Route::get('contact', [CategoryController::class, 'contactNavigation']);
 
 // Comment routes
 Route::post('/post/{id}', [CommentController::class, 'store']);
+Route::delete('/delete-comment/{id}/{post_id}', [CommentController::class, 'destroy']);
