@@ -86,7 +86,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 text-center text-sm-start">
                             <table class="table table-striped">
-                                
+                                <h5 class="text-primary">Posts admin</h5>
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
@@ -114,6 +114,46 @@
                                     @endforeach
                                 </tbody>
                               </table>  
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 text-center text-sm-start">
+                            <table class="table table-striped">
+                                <h5 class="text-primary">Categories admin</h5>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Post name</th>
+                                    <th scope="col">Updated at</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($categories as $category)
+                                    <tr> 
+                                        <th>{{$category->id}}</th>
+                                        <td><a style="color: #292b2c;" href="/post/{{$category->id}}">{{$category->name}}</a></td>
+                                        <td>{{$category->updated_at}}</td>
+                                        <td><a href="/edit-category/{{$category->id}}">📝</a></td>
+                                        <td>        
+                                            <form action="/delete-category/{{$category->id}}" method="post">
+                                                @csrf
+                                                {{method_field('DELETE');}}
+                                                <input style="border:0;" type="submit" name="submit" value="🗑️">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                              </table>  
+                              
                         </div>
                     </div>
                 </div>
