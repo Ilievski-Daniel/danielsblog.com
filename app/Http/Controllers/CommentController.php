@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\PostComment;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -54,9 +55,12 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show($id)
     {
-        //
+        $comments = DB::table('comments')->where('id', $id)->get();
+        return view('/edit-comment')
+        ->with('comments', $comments)
+        ->with('id', $id);
     }
 
     /**
@@ -77,9 +81,13 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->content = $request->comment;
+        $comment->author = $request->author;
+        $comment->save();
+        return redirect('/');
     }
 
     /**

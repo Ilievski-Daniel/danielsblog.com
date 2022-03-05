@@ -125,6 +125,7 @@
                             {{method_field('DELETE');}}
                             <input style="border:0;" type="submit" name="submit" value="🗑️">
                         </form>  
+                        <p><a href="/edit-comment/{{$com->id}}">📝</a></p>
                     @endif  
                 @endforeach
                 @endforeach
