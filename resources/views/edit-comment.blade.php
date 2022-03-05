@@ -33,6 +33,14 @@
                     <span class="focus-input100"></span>
                 </div>
 
+                <div class="wrap-input100 validate-input" data-validate = "Author is required">
+                    <span class="label-input100">Author</span>
+                        @foreach ($comments as $comment)
+                        <input class="input100" type="text" name="author" placeholder="Enter author name.." value='{{$comment->author}}'>
+                        @endforeach
+                    <span class="focus-input100"></span>
+                </div>
+
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <input style=" background-color: rgb(4, 65, 105);" type="submit" name="submit" class="contact100-form-btn" value="Submit post">

@@ -84,8 +84,8 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         $comment = Comment::find($id);
-        $comment->content = $request->comment;
         $comment->author = $request->author;
+        $comment->content = $request->comment;
         $comment->save();
         return redirect('/');
     }
