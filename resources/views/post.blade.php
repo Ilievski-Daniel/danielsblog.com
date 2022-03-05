@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/classy-nav.css">
     <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -49,7 +51,7 @@
                             <div class="container h-100">
                                 <div  class="row h-100 align-items-center">
                                     <div class="col-12">
-                                        <a href="index.html" class="original-logo"><image img style="width:80% !important;" src="/img/core-img/logo.png" alt=""></a></image>
+                                        <a href="/" class="original-logo"><image img style="width:80% !important;" src="/img/core-img/logo.png" alt=""></a></image>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +70,7 @@
                             <div class="classynav">
                                 <ul><li><a href="/">Home</a></li>
                                     @foreach ($categories as $category)
-                                    <li><a href="/">{{ $category->name }}</a></li>
+                                    <li style="margin-top: 25px;"><a href="/">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
 
@@ -88,12 +90,13 @@
         </div>
     </header>
 
+    {{-- Post information --}}
     <div class="text-center">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="single-blog-thumbnail">
-                        <image img src="/img/blog-img/3.jpg" alt="Post Image" width="500" height="600" style="margin-bottom: 1vh; border-radius: 15px;"></image>
+                        <image img src="/img/blog-img/3.jpg" alt="Post Image" width="500" height="600" style="margin-bottom: 1vh; margin-top: 5vh; border-radius: 15px;"></image>
                         <h6 style="margin-bottom: 1vh">Published: {{date('d', strtotime($post->created_at))}}<span> {{date('M', strtotime($post->created_at))}} by {{$post->author}} </h6>
                         <center><hr style="width:35%; margin-top: 1vh"></center>
                         <div class="post-date">
@@ -103,18 +106,44 @@
                         <p style="font-size: 15px">{{$post->content}}</p>
                         <center><hr style="width:50%;"></center>
                     </div>
-
-                    <div class="single-blog-thumbnail">
-                        <h5> Comments section: </h5>
-                        <h6 class="col-6" style="display: inline"> Daniel Ilievski says: </h6> <h6 class="col-6" style="display: inline">  Comment text Comment text Comment text Comment text Comment text</h6>
-                        <p> Posted at: bla bla bla </p>
-                        <center><hr style="width:50%;"></center>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
+                    {{-- Comments section --}}
+    <div class="text-center">
+        <center><hr style="width:100%; border-top: 3px solid gray;"></center>
+            <div class="single-blog-thumbnail">
+                <h5> Comments section: </h5>
+                <h6 class="col-6" style="display: inline"> A beautiful color changing cocktail, Galaxy in a glass. </h6>
+                <p> Posted by: {{$post->author}} | 05.03.2022 </p>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Post a comment section --}}
+    <div class="container-contact100">
+		<div class="wrap-contact100">
+            <div class="single-blog-thumbnail">
+                <form class="contact100-form validate-form" action={{$id}} method="POST">
+                    <center><hr style="width:100%; border-top: 3px solid gray;"></center>
+                    <div class="wrap-input100 text-center">
+                        <h6> Author: </h6>
+                        <textarea name="comment" cols="50" rows="1" placeholder="Enter your name.."></textarea>
+                    </div>
+                    <div class="wrap-input100 text-center">
+                        <h6> Comment </h6>
+                        <textarea name="comment" cols="50" rows="5" placeholder="Enter comment.."></textarea>
+                    </div>
+                    <div class="wrap-input100 text-center">
+                        <input class="btn btn-primary" style="padding-left: 3vh; padding-right: 3vh; margin-bottom: 1vh; margin-top: 1vh;" type="submit" value="Post comment" name="submit">
+                    </div>
+                    <center><hr style="width:100%; border-top: 3px solid gray;"></center>
+                </form>
+            </div>
+        </div>
+    </div>
     <footer class="text-center">
         <div class="container">
             <div class="row">
