@@ -120,12 +120,12 @@
                     @if ($comment->comment_id == $com->id)
                         <h6 class="col-6" style="display: inline"> {{$com->content}}</h6>
                         <p> Comment by: {{$com->author}} | {{$com->created_at}} </p> 
-                        <form action="/delete-comment/{{$com->id}}/{{$post->id}}" method="POST">
+                        {{-- <form action="/delete-comment/{{$com->id}}/{{$post->id}}" method="POST">
                             @csrf
                             {{method_field('DELETE');}}
                             <input style="border:0;" type="submit" name="submit" value="🗑️">
                         </form>  
-                        <p><a href="/edit-comment/{{$com->id}}">📝</a></p>
+                        <p><a href="/edit-comment/{{$com->id}}">📝</a></p> --}}
                     @endif  
                 @endforeach
                 @endforeach
