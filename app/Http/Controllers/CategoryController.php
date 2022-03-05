@@ -51,6 +51,13 @@ class CategoryController extends Controller
         return view('/index', ['categories' => $categories, 'posts' => $posts]);     
     }
 
+    public function contactNavigation()
+    {
+        $categories = Category::all();
+        $posts = Post::all();
+        return view('/contact', ['categories' => $categories, 'posts' => $posts]);     
+    }
+
     /**
      * Display the specified resource.
      *

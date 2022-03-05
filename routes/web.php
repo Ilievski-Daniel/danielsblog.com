@@ -42,4 +42,5 @@ Route::get('/admin', function () {
 });
 Route::get('/admin', [AdminController::class, 'show']);
 Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
-
+// Contact page route
+Route::get('contact', [CategoryController::class, 'contactNavigation']);
