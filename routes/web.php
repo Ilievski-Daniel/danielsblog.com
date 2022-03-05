@@ -5,7 +5,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +49,6 @@ Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
 
 // Contact page route
 Route::get('contact', [CategoryController::class, 'contactNavigation']);
+
+// Comment routes
+Route::post('/post/{id}', [CommentController::class, 'store']);

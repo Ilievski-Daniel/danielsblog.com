@@ -119,7 +119,7 @@
                 @foreach ($comm as $com)
                     @if ($comment->comment_id == $com->id)
                         <h6 class="col-6" style="display: inline"> {{$com->content}}</h6>
-                        <p> Posted by: {{$com->author}} | {{$com->created_at}} </p>   
+                        <p> Comment by: {{$com->author}} | {{$com->created_at}} </p>   
                     @endif  
                 @endforeach
                 @endforeach
@@ -133,10 +133,11 @@
 		<div class="wrap-contact100">
             <div class="single-blog-thumbnail">
                 <form class="contact100-form validate-form" action={{$id}} method="POST">
+                    @csrf
                     <center><hr style="width:100%; border-top: 3px solid gray;"></center>
                     <div class="wrap-input100 text-center">
                         <h6> Author: </h6>
-                        <textarea name="comment" cols="50" rows="1" placeholder="Enter your name.."></textarea>
+                        <textarea name="author" cols="50" rows="1" placeholder="Enter your name.."></textarea>
                     </div>
                     <div class="wrap-input100 text-center">
                         <h6> Comment </h6>
