@@ -33,7 +33,7 @@ Route::get('/add-category', function () {
 });
 Route::get('/all-posts', [CategoryController::class, 'index']);
 Route::post('/add-category', [CategoryController::class, 'insert']);
-
+Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy']);
 // Admin Panel routes
 Route::get('/admin', function () {
     return view('admin');
