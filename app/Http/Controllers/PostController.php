@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\PostCategories;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -50,11 +51,15 @@ class PostController extends Controller
 
     public function showPost($id){
         $categories = Category::all();
+        $comments = DB::table('post_comment')->where('post_id', $id)->get();
+        $comm = Comment::all();
         $category_id = DB::table('post_category')->where('post_id', $id)->first();
         $post = Post::find($id);
         return view('post')
         ->with('id', $id)
         ->with('categories', $categories)
+        ->with('comments', $comments)
+        ->with('comm', $comm)
         ->with('category_id', $category_id)
         ->with('post', $post);
     }

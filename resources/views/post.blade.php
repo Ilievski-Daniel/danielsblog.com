@@ -115,8 +115,14 @@
         <center><hr style="width:100%; border-top: 3px solid gray;"></center>
             <div class="single-blog-thumbnail">
                 <h5> Comments section: </h5>
-                <h6 class="col-6" style="display: inline"> A beautiful color changing cocktail, Galaxy in a glass. </h6>
-                <p> Posted by: {{$post->author}} | 05.03.2022 </p>
+                @foreach ($comments as $comment)
+                @foreach ($comm as $com)
+                    @if ($comment->comment_id == $com->id)
+                        <h6 class="col-6" style="display: inline"> {{$com->content}}</h6>
+                        <p> Posted by: {{$com->author}} | {{$com->created_at}} </p>   
+                    @endif  
+                @endforeach
+                @endforeach
             </div>
         </div>
     </div>
