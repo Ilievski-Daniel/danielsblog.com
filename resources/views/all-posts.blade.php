@@ -49,7 +49,7 @@
                             <div class="container h-100">
                                 <div  class="row h-100 align-items-center">
                                     <div class="col-12">
-                                        <a href="index.html" class="original-logo"><image img style="width:80% !important;" src="/img/core-img/logo.png" alt=""></a></image>
+                                        <a href="/" class="original-logo"><image img style="width:80% !important;" src="/img/core-img/logo.png" alt=""></a></image>
                                     </div>
                                 </div>
                             </div>
