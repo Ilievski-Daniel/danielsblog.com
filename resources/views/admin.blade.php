@@ -86,7 +86,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 text-center text-sm-start">
                             <table class="table table-striped">
-                                <h5 class="text-primary">Posts admin</h5>
+                                <h5 class="text-primary">Manage all posts</h5>
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
@@ -125,7 +125,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 text-center text-sm-start">
                             <table class="table table-striped">
-                                <h5 class="text-primary">Categories admin</h5>
+                                <h5 class="text-primary">Manage all categories</h5>
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
@@ -152,8 +152,45 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                              </table>  
-                              
+                            </table>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 text-center text-sm-start">
+                            <table class="table table-striped">
+                                <h5 class="text-primary">Manage all comments</h5>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">Comment</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($comments as $comment)
+                                    <tr> 
+                                        <td>{{$comment->id}}</td>
+                                        <td>{{$comment->author}}</a></td>
+                                        <td>{{$comment->content}}</a></td>
+                                        <td><a href="/edit-comment/{{$comment->id}}">📝</a></td>
+                                        <td>        
+                                            <form action="/delete-comment/{{$comment->id}}/{{$post->id}}" method="POST">
+                                                @csrf
+                                                {{method_field('DELETE');}}
+                                                <input style="border:0;" type="submit" name="submit" value="🗑️">
+                                            </form>  
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>  
                         </div>
                     </div>
                 </div>
