@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -82,7 +83,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->name = $request->categoryName;
+        $category->save();
+        return redirect('/admin');
+    }
+
+    public function showEdits($id){
+        $post = Post::find($id);
+        $categories = Category::all();
+        $category_id = DB::table('post_category')->where('post_id', $id)->first();
+        return view('/edit-category')
+        ->with('id', $id)
+        ->with('categories', $categories)
+        ->with('category_id', $category_id)
+        ->with('post', $post);
     }
 
     /**

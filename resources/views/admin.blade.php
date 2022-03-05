@@ -130,7 +130,7 @@
                                   <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Post name</th>
-                                    <th scope="col">Updated at</th>
+                                    <th scope="col">Created at</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                                   </tr>
@@ -140,7 +140,7 @@
                                     <tr> 
                                         <th>{{$category->id}}</th>
                                         <td><a style="color: #292b2c;" href="/post/{{$category->id}}">{{$category->name}}</a></td>
-                                        <td>{{$category->updated_at}}</td>
+                                        <td>{{$category->created_at}}</td>
                                         <td><a href="/edit-category/{{$category->id}}">📝</a></td>
                                         <td>        
                                             <form action="/delete-category/{{$category->id}}" method="post">
