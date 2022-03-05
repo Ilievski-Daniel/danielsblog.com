@@ -103,6 +103,13 @@
                         <p style="font-size: 15px">{{$post->content}}</p>
                         <center><hr style="width:50%;"></center>
                     </div>
+
+                    <div class="single-blog-thumbnail">
+                        <h5> Comments section: </h5>
+                        <h6 class="col-6" style="display: inline"> Daniel Ilievski says: </h6> <h6 class="col-6" style="display: inline">  Comment text Comment text Comment text Comment text Comment text</h6>
+                        <p> Posted at: bla bla bla </p>
+                        <center><hr style="width:50%;"></center>
+                    </div>
                 </div>
             </div>
         </div>
