@@ -93,7 +93,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="single-blog-thumbnail">
-                        <image img src="/img/blog-img/3.jpg" alt="Post Image" width="500" height="600" style="margin-bottom: 1vh"></image>
+                        <image img src="/img/blog-img/3.jpg" alt="Post Image" width="500" height="600" style="margin-bottom: 1vh; border-radius: 15px;"></image>
                         <h6 style="margin-bottom: 1vh">Published: {{date('d', strtotime($post->created_at))}}<span> {{date('M', strtotime($post->created_at))}} by {{$post->author}} </h6>
                         <center><hr style="width:35%; margin-top: 1vh"></center>
                         <div class="post-date">
