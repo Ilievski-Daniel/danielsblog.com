@@ -24,7 +24,7 @@ Route::get('post', function () {
 });
 Route::get('/add-post', [PostController::class, 'index']);
 Route::post('/add-post', [PostController::class, 'insert']);
-
+Route::get('/edit-post/{id}', [PostController::class, 'showEdits']);
 // Category routes
 Route::get('/', [CategoryController::class, 'homeNavigation']);
 Route::get('/add-category', function () {

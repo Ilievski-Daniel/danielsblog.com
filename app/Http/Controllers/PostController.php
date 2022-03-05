@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\PostCategories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -38,6 +39,17 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        dd('hii');
+    }
+
+    public function showEdits($id){
+        $post = Post::find($id);
+        $categories = Category::all();
+        $category_id = DB::table('post_category')->where('post_id', $id)->first();
+        return view('/edit-post')
+        ->with('id', $id)
+        ->with('categories', $categories)
+        ->with('category_id', $category_id)
+        ->with('post', $post);
     }
 }
