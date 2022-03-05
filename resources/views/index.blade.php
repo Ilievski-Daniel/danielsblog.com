@@ -210,8 +210,8 @@
     <footer class="text-center">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Daniel's Blog | All rights reserved</a>
+                <div class="col-12" style="margin-bottom: 2vh;">
+                    Copyright &copy; <script>document.write(new Date().getFullYear());</script> Daniel's Blog | All rights reserved</a>
                 </div>
             </div>
         </div>

@@ -48,6 +48,17 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    public function showPost($id){
+        $categories = Category::all();
+        $category_id = DB::table('post_category')->where('post_id', $id)->first();
+        $post = Post::find($id);
+        return view('post')
+        ->with('id', $id)
+        ->with('categories', $categories)
+        ->with('category_id', $category_id)
+        ->with('post', $post);
+    }
+
     public function showEdits($id){
         $post = Post::find($id);
         $categories = Category::all();

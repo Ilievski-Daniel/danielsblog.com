@@ -112,7 +112,7 @@
                                     <a href="#" style="display: inline" class="post-tag">{{ $category->name }}</a> /
                                     @endforeach
                                     <div class="line"></div>
-                                    <h4><a href="#" class="post-headline">{{ $post->postName }}</a></h4>
+                                    <h4><a href="/post/{{$post->id}}" class="post-headline">{{ $post->postName }}</a></h4>
                                     <p>{{ $post->shortDesc }}</p>
                                     <div class="post-meta">
                                         <p>By <a href="#">{{ $post->author }}</a></p>
@@ -129,8 +129,8 @@
     <footer class="text-center">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Daniel's Blog | All rights reserved</a>
+                <div class="col-12" style="margin-bottom: 2vh;">
+                    Copyright &copy; <script>document.write(new Date().getFullYear());</script> Daniel's Blog | All rights reserved</a>
                 </div>
             </div>
         </div>

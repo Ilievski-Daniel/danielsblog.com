@@ -26,21 +26,26 @@ Route::get('/add-post', [PostController::class, 'index']);
 Route::post('/add-post', [PostController::class, 'insert']);
 Route::get('/edit-post/{id}', [PostController::class, 'showEdits']);
 Route::post('/edit-post/{id}', [PostController::class, 'update']);
+Route::get('/post/{id}', [PostController::class, 'showPost']);
+
 // Category routes
 Route::get('/', [CategoryController::class, 'homeNavigation']);
 Route::get('/add-category', function () {
     return view('add-category');
 });
+
 Route::get('/all-posts', [CategoryController::class, 'index']);
 Route::post('/add-category', [CategoryController::class, 'insert']);
 Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy']);
 Route::get('/edit-category/{id}', [CategoryController::class, 'showEdits']);
 Route::post('/edit-category/{id}', [CategoryController::class, 'update']);
+
 // Admin Panel routes
 Route::get('/admin', function () {
     return view('admin');
 });
 Route::get('/admin', [AdminController::class, 'show']);
 Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
+
 // Contact page route
 Route::get('contact', [CategoryController::class, 'contactNavigation']);

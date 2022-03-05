@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Daniel's Blog</title>
+    <title>Post {{$id}}</title>
     <link rel="icon" href="/img/core-img/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -15,6 +15,30 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="original-load"></div>
+        </div>
+    </div>
+
+    <div class="subscribe-newsletter-area">
+        <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal-body">
+                        <h5 class="title">Subscribe to newsletter</h5>
+                        <form action="#" class="newsletterForm" method="post">
+                            <input type="email" name="email" id="subscribesForm2" placeholder="Your e-mail here">
+                            <button type="submit" class="btn original-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Header Navigation --}}
     <header class="header-area">
         <div class="original-nav-area" id="stickyNav">
             <div class="classy-nav-container breakpoint-off">
@@ -64,32 +88,26 @@
         </div>
     </header>
 
-    <div class="container py-4">
-    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-  
-      <!-- Name input -->
-      <div class="mb-3">
-        <label class="form-label" for="name">Name</label>
-        <input class="form-control" id="name" type="text" placeholder="Name" required/>
-      </div>
-  
-      <!-- Email address input -->
-      <div class="mb-3">
-        <label class="form-label" for="emailAddress">Email Address</label>
-        <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" required />
-      </div>
-  
-      <!-- Message input -->
-      <div class="mb-3">
-        <label class="form-label" for="message">Message</label>
-        <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" required></textarea>
-      </div>
-
-      <div class="mb-3">
-          <input class="btn btn-primary" type="submit" value="Send Message"></input>
-      </div>
-    </form>
+    <div class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="single-blog-thumbnail">
+                        <image img src="/img/blog-img/3.jpg" alt="Post Image" width="500" height="600" style="margin-bottom: 1vh"></image>
+                        <h6 style="margin-bottom: 1vh">Published: {{date('d', strtotime($post->created_at))}}<span> {{date('M', strtotime($post->created_at))}} by {{$post->author}} </h6>
+                        <center><hr style="width:35%; margin-top: 1vh"></center>
+                        <div class="post-date">
+                            <h5>{{$post->postName}}</h5>
+                        </div>
+                        <center><hr style="width:50%;"></center> 
+                        <p style="font-size: 15px">{{$post->content}}</p>
+                        <center><hr style="width:50%;"></center>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <footer class="text-center">
         <div class="container">
             <div class="row">
@@ -100,11 +118,11 @@
         </div>
     </footer>
 
-<script src="/js/jquery/jquery-2.2.4.min.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/plugins.js"></script>
-<script src="/js/active.js"></script>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/active.js"></script>
+
 </body>
-  
+</html>
