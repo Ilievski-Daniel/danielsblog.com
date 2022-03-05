@@ -39,7 +39,13 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-        dd('hii');
+        $post = Post::find($id);
+        $post->postName = $request->postName;
+        $post->author = $request->author;
+        $post->shortDesc = $request->shortDesc;
+        $post->content = $request->content;
+        $post->save();
+        return redirect('/');
     }
 
     public function showEdits($id){

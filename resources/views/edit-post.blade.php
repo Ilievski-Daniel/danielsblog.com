@@ -19,7 +19,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="add-post" method="POST">
+			<form class="contact100-form validate-form" action="{{$id}}" method="POST">
                 @csrf
 				<span class="contact100-form-title">
 					Edit post # {{$id}}
