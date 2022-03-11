@@ -58,7 +58,7 @@
         {{-- Dashboard header --}}
         <div class="content">
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0" id="#home">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="/" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -86,7 +86,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 text-center text-sm-start">
                             <table class="table table-striped">
-                                
+                                <h5 class="text-primary">Manage all posts</h5>
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
@@ -114,6 +114,83 @@
                                     @endforeach
                                 </tbody>
                               </table>  
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 text-center text-sm-start">
+                            <table class="table table-striped">
+                                <h5 class="text-primary">Manage all categories</h5>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Post name</th>
+                                    <th scope="col">Created at</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($categories as $category)
+                                    <tr> 
+                                        <th>{{$category->id}}</th>
+                                        <td><a style="color: #292b2c;" href="/post/{{$category->id}}">{{$category->name}}</a></td>
+                                        <td>{{$category->created_at}}</td>
+                                        <td><a href="/edit-category/{{$category->id}}">📝</a></td>
+                                        <td>        
+                                            <form action="/delete-category/{{$category->id}}" method="post">
+                                                @csrf
+                                                {{method_field('DELETE');}}
+                                                <input style="border:0;" type="submit" name="submit" value="🗑️">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 text-center text-sm-start">
+                            <table class="table table-striped">
+                                <h5 class="text-primary">Manage all comments</h5>
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">Comment</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($comments as $comment)
+                                    <tr> 
+                                        <td>{{$comment->id}}</td>
+                                        <td>{{$comment->author}}</a></td>
+                                        <td>{{$comment->content}}</a></td>
+                                        <td><a href="/edit-comment/{{$comment->id}}">📝</a></td>
+                                        <td>        
+                                            <form action="/delete-comment/{{$comment->id}}/{{$post->id}}" method="POST">
+                                                @csrf
+                                                {{method_field('DELETE');}}
+                                                <input style="border:0;" type="submit" name="submit" value="🗑️">
+                                            </form>  
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>  
                         </div>
                     </div>
                 </div>
@@ -123,7 +200,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                        <div class="col-12 col-sm-6 text-center text-sm-start" style="margin-bottom: 2vh;">
                             &copy; <a href="/">Daniel's Blog</a>, All Right Reserved. 
                         </div>
                     </div>

@@ -21,23 +21,6 @@
         </div>
     </div>
 
-    <div class="subscribe-newsletter-area">
-        <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="modal-body">
-                        <h5 class="title">Subscribe to newsletter</h5>
-                        <form action="#" class="newsletterForm" method="post">
-                            <input type="email" name="email" id="subscribesForm2" placeholder="Your e-mail here">
-                            <button type="submit" class="btn original-btn">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     {{-- Header Navigation --}}
     <header class="header-area">
         <div class="original-nav-area" id="stickyNav">
@@ -49,7 +32,7 @@
                             <div class="container h-100">
                                 <div  class="row h-100 align-items-center">
                                     <div class="col-12">
-                                        <a href="index.html" class="original-logo"><image img style="width:80% !important;" src="/img/core-img/logo.png" alt=""></a></image>
+                                        <a href="/" class="original-logo"><image img style="width:80% !important;" src="/img/core-img/logo.png" alt=""></a></image>
                                     </div>
                                 </div>
                             </div>
@@ -210,8 +193,8 @@
     <footer class="text-center">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Daniel's Blog | All rights reserved</a>
+                <div class="col-12" style="margin-bottom: 2vh;">
+                    Copyright &copy; <script>document.write(new Date().getFullYear());</script> Daniel's Blog | All rights reserved</a>
                 </div>
             </div>
         </div>

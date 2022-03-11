@@ -6,12 +6,14 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>All posts</title>
+    <title>Post {{$id}}</title>
     <link rel="icon" href="/img/core-img/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/classy-nav.css">
     <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -68,7 +70,7 @@
                             <div class="classynav">
                                 <ul><li><a href="/">Home</a></li>
                                     @foreach ($categories as $category)
-                                    <li><a href="/">{{ $category->name }}</a></li>
+                                    <li style="margin-top: 25px;"><a href="/">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
 
@@ -88,44 +90,73 @@
         </div>
     </header>
 
-    <!-- ##### Blog Wrapper Start ##### -->
-    @foreach ($posts as $post)
-    <div style="padding-top:50px;" class="blog-wrapper clearfix">
+    {{-- Post information --}}
+    <div class="text-center">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-9">
-                    <!-- Single Blog Area  -->
-                    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-md-6">
-                                <div class="single-blog-thumbnail">
-                                    <img src="img/blog-img/3.jpg" alt="">
-                                    <div class="post-date">
-                                        <a href="#">{{date('d', strtotime($post->created_at))}}<span> {{date('M', strtotime($post->created_at))}}</span></a>
-                                    </div>
-                                </div>
-                            </div>   
-                            <div class="col-12 col-md-6">
-                                <!-- Blog Content -->
-                                <div class="single-blog-content">
-                                    @foreach ($post->categories as $category)
-                                    <a href="#" style="display: inline" class="post-tag">{{ $category->name }}</a> /
-                                    @endforeach
-                                    <div class="line"></div>
-                                    <h4><a href="/post/{{$post->id}}" class="post-headline">{{ $post->postName }}</a></h4>
-                                    <p>{{ $post->shortDesc }}</p>
-                                    <div class="post-meta">
-                                        <p>By <a href="#">{{ $post->author }}</a></p>
-                                        <p>3 comments</p>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-12">
+                    <div class="single-blog-thumbnail">
+                        <image img src="/img/blog-img/3.jpg" alt="Post Image" width="500" height="600" style="margin-bottom: 1vh; margin-top: 5vh; border-radius: 15px;"></image>
+                        <h6 style="margin-bottom: 1vh">Published: {{date('d', strtotime($post->created_at))}}<span> {{date('M', strtotime($post->created_at))}} by {{$post->author}} </h6>
+                        <center><hr style="width:35%; margin-top: 1vh"></center>
+                        <div class="post-date">
+                            <h5>{{$post->postName}}</h5>
                         </div>
-                    </div>   
+                        <center><hr style="width:50%;"></center> 
+                        <p style="font-size: 15px">{{$post->content}}</p>
+                        <center><hr style="width:50%;"></center>
+                    </div>
                 </div>
             </div>
-        </div> 
-        @endforeach
+        </div>
+    </div>
+                    {{-- Comments section --}}
+    <div class="text-center">
+        <center><hr style="width:100%; border-top: 3px solid gray;"></center>
+            <div class="single-blog-thumbnail">
+                <h5> Comments section: </h5>
+                @foreach ($comments as $comment)
+                @foreach ($comm as $com)
+                    @if ($comment->comment_id == $com->id)
+                        <h6 class="col-6" style="display: inline"> {{$com->content}}</h6>
+                        <p> Comment by: {{$com->author}} | {{$com->created_at}} </p> 
+                        {{-- <form action="/delete-comment/{{$com->id}}/{{$post->id}}" method="POST">
+                            @csrf
+                            {{method_field('DELETE');}}
+                            <input style="border:0;" type="submit" name="submit" value="🗑️">
+                        </form>  
+                        <p><a href="/edit-comment/{{$com->id}}">📝</a></p> --}}
+                    @endif  
+                @endforeach
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Post a comment section --}}
+    <div class="container-contact100">
+		<div class="wrap-contact100">
+            <div class="single-blog-thumbnail">
+                <form class="contact100-form validate-form" action={{$id}} method="POST">
+                    @csrf
+                    <center><hr style="width:100%; border-top: 3px solid gray;"></center>
+                    <div class="wrap-input100 text-center">
+                        <h6> Author: </h6>
+                        <textarea name="author" cols="50" rows="1" placeholder="Enter your name.."></textarea>
+                    </div>
+                    <div class="wrap-input100 text-center">
+                        <h6> Comment </h6>
+                        <textarea name="comment" cols="50" rows="5" placeholder="Enter comment.."></textarea>
+                    </div>
+                    <div class="wrap-input100 text-center">
+                        <input class="btn btn-primary" style="padding-left: 3vh; padding-right: 3vh; margin-bottom: 1vh; margin-top: 1vh;" type="submit" value="Post comment" name="submit">
+                    </div>
+                    <center><hr style="width:100%; border-top: 3px solid gray;"></center>
+                </form>
+            </div>
+        </div>
+    </div>
     <footer class="text-center">
         <div class="container">
             <div class="row">

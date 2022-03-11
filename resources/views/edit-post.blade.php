@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Add post</title>
+	<title>Edit post</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
@@ -19,30 +19,35 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="add-post" method="POST">
+			<form class="contact100-form validate-form" action="{{$id}}" method="POST">
                 @csrf
 				<span class="contact100-form-title">
-					Create post
+					Edit post # {{$id}}
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate = "Post name is required">
-					<span class="label-input100">Post</span>
-					<input class="input100" type="text" name="postName" placeholder="Enter post name">
+					<span class="label-input100">Post </span>
+					<input class="input100" type="text" name="postName" placeholder="Enter post name" value="{{$post->postName}}">
 					<span class="focus-input100"></span>
 				</div>
                 
                 <div class="wrap-input100 validate-input" data-validate = "Author is required">
-					<span class="label-input100">Author</span>
-					<input class="input100" type="text" name="author" placeholder="Enter author name">
+					<span class="label-input100">Author </span>
+					<input class="input100" type="text" name="author" placeholder="Enter author name" value="{{$post->author}}">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Category</span>
+					<span class="label-input100">Category {{$category_id->post_id}}</span>
 					<div>
 						<select class="selection-2" name="category">
                             @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option> 
+                                @if ($category->id == $category_id->category_id)
+                                    <option value="{{$category->name}}" @selected(true)>{{$category->name}}</option>
+                                @else
+                                    <option value="{{$category->name}}">{{$category->name}}</option>
+                                @endif
+                                
                             @endforeach
 						</select>
 					</div>
@@ -51,13 +56,13 @@
                 
                 <div class="wrap-input100 validate-input" data-validate = "Short description is required">
 					<span class="label-input100">Short description</span>
-					<input class="input100" type="text" name="shortDesc" placeholder="Enter short description..">
+					<input class="input100" type="text" name="shortDesc" placeholder="Enter short description.." value="{{$post->shortDesc}}">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Content is required">
 					<span class="label-input100">Content</span>
-					<textarea class="input100" name="content" placeholder="Enter content here..."></textarea>
+					<textarea class="input100" name="content" placeholder="Enter content here...">{{$post->content}}</textarea>
 					<span class="focus-input100"></span>
 				</div>
 
