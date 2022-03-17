@@ -41,9 +41,13 @@ Route::get('/edit-category/{id}', [CategoryController::class, 'showEdits']);
 Route::post('/edit-category/{id}', [CategoryController::class, 'update']);
 
 // Admin Panel routes
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/dashboard', function () {
+    return view('home');
 });
+Route::get('/all-comments', function () {
+    return view('comments-dash');
+});
+
 Route::get('/admin', [AdminController::class, 'show']);
 Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
 
@@ -55,3 +59,6 @@ Route::post('/post/{id}', [CommentController::class, 'store']);
 Route::delete('/delete-comment/{id}/{post_id}', [CommentController::class, 'destroy']);
 Route::post('/edit-comment/{id}', [CommentController::class, 'update']);
 Route::get('/edit-comment/{id}', [CommentController::class, 'show']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
