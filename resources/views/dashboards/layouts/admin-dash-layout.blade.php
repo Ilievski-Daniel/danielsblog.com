@@ -22,7 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav style="color: white;" class="main-header navbar navbar-expand navbar-gray navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -33,15 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/contact" class="nav-link">Contact</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();"> {{ __('Logout') }}
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-        </form>
       </li>
     </ul>
   </nav>
@@ -57,9 +48,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name;}}</a>
-        </div>
+          <a href="/home" class="d-block">{{ Auth::user()->name;}}
+          </a>
+          <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();"> {{ __('Logout') }}
+          </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
       </div>
+    </div> 
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
