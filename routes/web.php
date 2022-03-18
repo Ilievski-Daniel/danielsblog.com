@@ -35,6 +35,7 @@ Route::get('/add-category', function () {
 });
 
 Route::get('/all-posts', [CategoryController::class, 'index']);
+Route::get('/author-posts/{id}', [PostController::class, 'authorPosts']);
 Route::post('/add-category', [CategoryController::class, 'insert']);
 Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy']);
 Route::get('/edit-category/{id}', [CategoryController::class, 'showEdits']);

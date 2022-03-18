@@ -87,4 +87,15 @@ class PostController extends Controller
         ->with('categories', $categories);
     }
 
+    public function authorPosts($id){
+        $categories = Category::all();
+        $posts = Post::all();
+        $user = DB::table('users')->where('id', $id)->first();
+        return view('/author-posts')
+        ->with('id', $id)
+        ->with('categories', $categories)
+        ->with('posts', $posts)
+        ->with('user', $user);
+    }
+
 }
