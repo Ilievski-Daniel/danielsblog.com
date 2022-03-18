@@ -24,19 +24,16 @@
 				<span class="contact100-form-title">
 					Create post
 				</span>
+				<center><h5 class="mb-2">Welcome back, {{Auth::user()->name;}}</h5></center>
 
 				<div class="wrap-input100 validate-input" data-validate = "Post name is required">
 					<span class="label-input100">Post</span>
 					<input class="input100" type="text" name="postName" placeholder="Enter post name">
 					<span class="focus-input100"></span>
 				</div>
-                
-                <div class="wrap-input100 validate-input" data-validate = "Author is required">
-					<span class="label-input100">Author</span>
-					<input class="input100" type="text" name="author" placeholder="Enter author name">
-					<span class="focus-input100"></span>
-				</div>
 
+				<input type="hidden" name="author" value="{{Auth::user()->id}}">
+				
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Category</span>
 					<div>

@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\PostCategories;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,7 @@ class PostController extends Controller
     public function insert(Request $request){
         $post = new Post;
         $post->postName = $request->postName;
-        $post->author = $request->author;
+        $post->user_id = $request->author;
         $post->shortDesc = $request->shortDesc;
         $post->content = $request->content;
         $post->save();
@@ -29,7 +30,7 @@ class PostController extends Controller
         $postcategories->post_id = $post->id;
         $postcategories->category_id = $request->category;
         $postcategories->save();
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function destroy($id){

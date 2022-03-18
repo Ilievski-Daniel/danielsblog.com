@@ -20,7 +20,7 @@
         <th scope="row">{{$rowCounter}}</th>
         <td><a style="color: white" href="/post/{{$post->id}}">{{$post->postName}}</a></td>
         <td>{{Auth::user()->name}}</td>
-        <td>@mdo</td>
+        <td><button><a href="/edit-post/{{$post->id}}">📝</a></button></td>
         <td>
             <form action="/post-delete/{{$post->id}}" method="POST">
                 @csrf
