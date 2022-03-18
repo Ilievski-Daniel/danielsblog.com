@@ -74,4 +74,12 @@ class PostController extends Controller
         ->with('category_id', $category_id)
         ->with('post', $post);
     }
+
+    public function showDashPosts($id){
+        $posts = DB::table('posts')->where('user_id', $id)->get();
+        return view('/posts-dash')
+        ->with('id', $id)
+        ->with('posts', $posts);
+    }
+
 }

@@ -9,6 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
+  <base href="{{ \URL::to('/') }}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -90,10 +91,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
+                <a href="/posts-dashboard/{{Auth::user()->id}}" class="nav-link">
+                <i class="nav-icon fa-solid fa-file-circle-check"></i>
+                <p>
+                    See All Posts
+                </p>
+                </a>
+            </li>  
+            <li class="nav-item">
                 <a href="/add-post" class="nav-link">
                 <i class="nav-icon fa-solid fa-clipboard"></i>
                 <p>
-                Add Posts
+                    Add New Post
                 </p>
                 </a>
             </li>  
@@ -103,13 +112,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                    <a href="/all-comments" class="nav-link">
-                    <i class="nav-icon fa-solid fa-comment-dots"></i>
-                    <p>
-                        Comments
-                    </p>
-                    </a>
-                </li>
+                <a href="/all-comments" class="nav-link">
+                <i class="nav-icon fa-solid fa-comment-dots"></i>
+                <p>
+                    Comments
+                </p>
+                </a>
+            </li>
         </ul>
       </nav>
       <hr style="border: 1px solid white;">

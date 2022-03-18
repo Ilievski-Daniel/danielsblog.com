@@ -47,6 +47,7 @@ Route::get('/dashboard', function () {
 Route::get('/all-comments', function () {
     return view('comments-dash');
 });
+Route::get('/posts-dashboard/{id}', [PostController::class, 'showDashPosts']);
 
 Route::get('/admin', [AdminController::class, 'show']);
 Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
