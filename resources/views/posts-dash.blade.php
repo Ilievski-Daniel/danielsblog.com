@@ -8,23 +8,29 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Post Name</th>
-        <th scope="col">Post Category</th>
         <th scope="col">Author</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
+        @php $rowCounter = 1; @endphp
+        @foreach($posts as $post)
       <tr>
-          @foreach($posts as $post)
-        <th scope="row">{{$post->id}}</th>
+        <th scope="row">{{$rowCounter}}</th>
         <td><a style="color: white" href="/post/{{$post->id}}">{{$post->postName}}</a></td>
-        <td>Category</td>
         <td>{{Auth::user()->name}}</td>
         <td>@mdo</td>
-        <td>Otto</td>
-        @endforeach
+        <td>
+            <form action="/post-delete/{{$post->id}}" method="POST">
+                @csrf
+                {{method_field('DELETE')}}
+                <button type="submit" name="submit" value="delete">🗑️</button>    
+            </form> 
+        </td>
       </tr>
+        @php $rowCounter = $rowCounter + 1; @endphp
+      @endforeach
     </tbody>
   </table>
 @else

@@ -35,7 +35,7 @@ class PostController extends Controller
     public function destroy($id){
         $post = Post::find($id);
         $post->delete();
-        return redirect('/admin');
+        return redirect('/home');
     }
 
     public function update(Request $request, $id)
@@ -77,9 +77,13 @@ class PostController extends Controller
 
     public function showDashPosts($id){
         $posts = DB::table('posts')->where('user_id', $id)->get();
+        $post_categories = DB::table('post_category')->where('post_id', $id)->get();
+        $categories = Category::all();
         return view('/posts-dash')
         ->with('id', $id)
-        ->with('posts', $posts);
+        ->with('post_categories', $post_categories)
+        ->with('posts', $posts)
+        ->with('categories', $categories);
     }
 
 }

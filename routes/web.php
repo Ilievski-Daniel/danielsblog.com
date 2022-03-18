@@ -50,7 +50,7 @@ Route::get('/all-comments', function () {
 Route::get('/posts-dashboard/{id}', [PostController::class, 'showDashPosts']);
 
 Route::get('/admin', [AdminController::class, 'show']);
-Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
+Route::delete('/post-delete/{id}', [PostController::class, 'destroy']);
 
 // Contact page route
 Route::get('contact', [CategoryController::class, 'contactNavigation']);
