@@ -1,3 +1,11 @@
+@if(!isset($post->id))
+<script>window.location.href = "/home";</script>
+@php dd('Post does not exist!'); @endphp;
+@endif
+@if(Auth::user()->id != $post->user_id)
+<script>window.location.href = "/home";</script>
+@else
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +39,7 @@
 					<span class="focus-input100"></span>
 				</div>
                 
-                <div class="wrap-input100 validate-input" data-validate = "Author is required">
-					<span class="label-input100">Author </span>
-					<input class="input100" type="text" name="author" placeholder="Enter author name" value="{{$post->author}}">
-					<span class="focus-input100"></span>
-				</div>
+                <input type="hidden" name="author" value="{{Auth::user()->id}}">
 
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Category {{$category_id->post_id}}</span>
@@ -107,3 +111,4 @@
 
 </body>
 </html>
+@endif

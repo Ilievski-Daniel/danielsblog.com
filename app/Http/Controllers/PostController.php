@@ -43,11 +43,11 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->postName = $request->postName;
-        $post->author = $request->author;
+        $post->user_id = $request->author;
         $post->shortDesc = $request->shortDesc;
         $post->content = $request->content;
         $post->save();
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function showPost($id){
